@@ -1,0 +1,277 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 100px;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?w=1600&q=60');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.06;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 50%, rgba(15, 32, 64, 0.9) 100%);
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.vline1 {
+  position: absolute;
+  left: calc(50% - 300px);
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(201,168,76,0.15), transparent);
+}
+.vline2 {
+  position: absolute;
+  right: 8%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(201,168,76,0.08), transparent);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Left */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.25);
+  padding: 0.4rem 1rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease both;
+}
+.badgeDot {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s 0.1s ease both;
+}
+.titleLine1 {
+  display: block;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: var(--white);
+  font-style: italic;
+}
+.titleLine2 {
+  display: block;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--gold);
+}
+.titleLine3 {
+  display: block;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--text-dim);
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(201,168,76,0.2));
+  margin: 1.5rem 0;
+  animation: fadeInUp 0.8s 0.2s ease both;
+}
+
+.desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: rgba(248,246,240,0.7);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s 0.3s ease both;
+}
+
+.ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+  animation: fadeInUp 0.8s 0.4s ease both;
+}
+
+.stats {
+  display: flex;
+  gap: 2.5rem;
+  animation: fadeInUp 0.8s 0.5s ease both;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.statNum {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.statLabel {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Right */
+.right {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 1s 0.6s ease both;
+}
+
+.imageCard {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.imageInner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  border: 1px solid rgba(201,168,76,0.2);
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.1);
+  transition: transform 0.6s ease;
+}
+.imageCard:hover .heroImg {
+  transform: scale(1.03);
+}
+
+.imageCaption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(10,22,40,0.95) 0%, transparent 100%);
+  padding: 2rem 1.5rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.scaleIcon {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.cardCorner {
+  position: absolute;
+  top: -1px; right: -1px;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 40px 40px 0;
+  border-color: transparent var(--gold) transparent transparent;
+  opacity: 0.5;
+}
+
+/* After the card — decorative box */
+.imageCard::before {
+  content: '';
+  position: absolute;
+  bottom: -15px; right: -15px;
+  width: 100%; height: 100%;
+  border: 1px solid rgba(201,168,76,0.12);
+  z-index: -1;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 1s 1s ease both;
+}
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollPulse 2s infinite;
+}
+@keyframes scrollPulse {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .badge { margin-left: auto; margin-right: auto; }
+  .divider { margin-left: auto; margin-right: auto; }
+  .desc { margin-left: auto; margin-right: auto; }
+  .ctas { justify-content: center; }
+  .stats { justify-content: center; }
+  .right { display: none; }
+  .vline1, .vline2 { display: none; }
+}

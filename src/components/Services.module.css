@@ -1,0 +1,104 @@
+.services {
+  padding: 8rem 0;
+  background: var(--navy);
+  position: relative;
+}
+
+.topDivider {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.08);
+}
+
+.card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  background: var(--navy);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.card:hover {
+  background: var(--navy-mid);
+  transform: translateY(-4px);
+  z-index: 1;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.cardHover {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.card:hover .cardHover {
+  transform: scaleX(1);
+}
+
+.cardNum {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(201,168,76,0.08);
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  line-height: 1;
+  transition: color 0.4s;
+}
+.card:hover .cardNum {
+  color: rgba(201,168,76,0.15);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.cardTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.cardLine {
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 1rem;
+  transition: width 0.4s;
+}
+.card:hover .cardLine { width: 50px; }
+
+.cardDesc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: rgba(248,246,240,0.6);
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 650px) {
+  .grid { grid-template-columns: 1fr; gap: 1px; }
+}

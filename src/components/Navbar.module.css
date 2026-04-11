@@ -1,0 +1,210 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.5rem 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(10, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logoIcon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.5));
+}
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.logoName {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+.logoSub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Links */
+.links {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+}
+.link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 240, 0.75);
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  transition: color 0.3s;
+}
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 1px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+}
+.link:hover {
+  color: var(--gold);
+}
+.link:hover::after {
+  left: 0.75rem;
+  right: 0.75rem;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.langBtn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+.langBtn:hover {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+.ctaBtn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  padding: 0.55rem 1.2rem;
+  transition: all 0.3s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.ctaBtn:hover {
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Burger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.bar {
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+  display: block;
+}
+.open1 { transform: rotate(45deg) translate(4px, 4px); }
+.open2 { opacity: 0; }
+.open3 { transform: rotate(-45deg) translate(4px, -4px); }
+
+/* Mobile Menu */
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  background: rgba(10, 22, 40, 0.98);
+  padding: 1rem 2rem 2rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  gap: 0.25rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.mobileOpen {
+  max-height: 500px;
+}
+.mobileLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(248, 246, 240, 0.8);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  transition: color 0.3s;
+}
+.mobileLink:hover { color: var(--gold); }
+.mobileLang {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  color: var(--gold);
+  background: none;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-align: center;
+}
+.mobileCta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  padding: 0.75rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .links, .ctaBtn { display: none; }
+  .burger { display: flex; }
+  .mobileMenu { display: flex; }
+}
