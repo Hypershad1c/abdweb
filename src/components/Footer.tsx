@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p className={styles.copy}>© {year} Cabinet El Amrani. {t('footer.rights')}.</p>
+          <p className={styles.copy}>© {year} Cabinet Ratby. {t('footer.rights')}.</p>
           <div className={styles.bottomLinks}>
             <a href="/privacy" className={styles.bottomLink}>{t('footer.privacy')}</a>
             <span className={styles.sep}>·</span>
