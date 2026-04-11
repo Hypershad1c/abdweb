@@ -1,8 +1,14 @@
 .footer {
-  background: var(--navy);
-  border-top: 1px solid rgba(201,168,76,0.08);
-  padding: 5rem 0 2rem;
+    padding: 5rem 0 2rem;
+  background: linear-gradient(
+    180deg,
+    #070f1f 0%,
+    #0a1628 35%,
+    #0f2040 70%,
+    #162d56 100%
+  );
   position: relative;
+  overflow: hidden;
 }
 .topLine {
   position: absolute; top: 0; left: 0; right: 0; height: 1px;

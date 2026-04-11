@@ -33,10 +33,10 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // About
   'about.badge':     { fr: 'À Propos',        ar: 'نبذة عنّا' },
-  'about.title':     { fr: 'Maître Abdessamad Ratby', ar: 'الأستاذ حسن العمراني' },
-  'about.desc1':     { fr: 'Diplômé de la Faculté de Droit de Casablanca et titulaire d\'un Master en Droit des Affaires, Maître El Amrani exerce avec passion et rigueur depuis plus de 15 ans.', ar: 'خريج كلية الحقوق بالدار البيضاء وحامل شهادة الماستر في قانون الأعمال، يمارس الأستاذ العمراني مهنته بشغف وصرامة منذ أكثر من 15 عامًا.' },
-  'about.desc2':     { fr: 'Son expertise couvre le droit des affaires, le droit de la famille, le droit immobilier et le contentieux commercial, offrant à ses clients une défense complète et stratégique.', ar: 'تشمل خبرته قانون الأعمال وقانون الأسرة وقانون العقارات والنزاعات التجارية، مما يوفر لعملائه دفاعاً شاملاً واستراتيجياً.' },
-  'about.exp':       { fr: '15+ ans d\'expérience', ar: '+15 سنة خبرة' },
+  'about.title':     { fr: 'Maître Abdessamad Ratby', ar: 'الأستاذ عبد الصمد راتبي' },
+  'about.desc1':     { fr: 'Avocat au Barreau de Casablanca spécialisé en Droit des Affaires et Contentieux.', ar:'محامٍ في نقابة المحامين بالدار البيضاء متخصص في قانون الأعمال والتقاضي' },
+  'about.desc2':     { fr: 'Maître Ratby met à profit son expertise juridique rigoureuse pour accompagner les entreprises et les particuliers.', ar: 'يستغل المحامي راتبي خبرته لأنه بسبب الشركات والأفراد. بفضل خبرته الراسخة في الشركات المرموقة والإدارة القانونية، يقدم نهجاً استراتيجياً ومتعدد التخصصات.' },
+  'about.exp':       { fr: '5+ ans d\'expérience', ar: '+5 سنة خبرة' },
   'about.lang':      { fr: 'Arabe • Français • Anglais', ar: 'العربية • الفرنسية • الإنجليزية' },
   'about.bar':       { fr: 'Barreau de Casablanca', ar: 'نقابة المحامين بالدار البيضاء' },
 
@@ -74,7 +74,7 @@ const translations: Record<string, Record<Lang, string>> = {
   'contact.address': { fr: 'Adresse',              ar: 'العنوان' },
   'contact.hours':   { fr: 'Heures d\'ouverture',  ar: 'ساعات العمل' },
   'contact.hours.val': { fr: 'Lun – Ven: 9h – 18h\nSam: 9h – 13h', ar: 'الإثنين – الجمعة: 9 – 18\nالسبت: 9 – 13' },
-  'contact.addr.val':  { fr: '157 LOT CHAHDIA, RUE 86 N8, Casablanca 20220', ar: '157 LOT CHAHDIA, RUE 86 N8, Casablanca 20220' },
+  'contact.addr.val':  { fr: '157 LOT CHAHDIA, RUE 86 N8, Casablanca 20220', ar: '157 LOT  CHAHDIA, RUE 86 N8, Casablanca 20220' },
   'contact.success':   { fr: 'Message envoyé avec succès!', ar: 'تم إرسال رسالتك بنجاح!' },
 
   // Footer

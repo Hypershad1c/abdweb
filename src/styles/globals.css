@@ -26,7 +26,13 @@ html {
 }
 
 body {
-  background-color: var(--navy);
+  background: linear-gradient(
+    135deg,
+    #070f1f 0%,
+    #0a1628 40%,
+    #0f2040 75%,
+    #162d56 100%
+  );
   color: var(--white);
   font-family: var(--font-body);
   font-size: 18px;

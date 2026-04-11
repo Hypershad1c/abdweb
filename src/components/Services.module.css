@@ -1,7 +1,14 @@
 .services {
   padding: 8rem 0;
-  background: var(--navy);
+  background: linear-gradient(
+    180deg,
+    #070f1f 0%,
+    #0a1628 35%,
+    #0f2040 70%,
+    #162d56 100%
+  );
   position: relative;
+  overflow: hidden;
 }
 
 .topDivider {
