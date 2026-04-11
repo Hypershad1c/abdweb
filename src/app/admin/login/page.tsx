@@ -35,7 +35,7 @@ export default function AdminLogin() {
         <div className={styles.logo}>
           <span className={styles.logoIcon}>⚖</span>
           <div>
-            <p className={styles.logoName}>El Amrani</p>
+            <p className={styles.logoName}>Ratby</p>
             <p className={styles.logoSub}>Administration</p>
           </div>
         </div>

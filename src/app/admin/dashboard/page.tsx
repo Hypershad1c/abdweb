@@ -77,7 +77,7 @@ export default function AdminDashboard() {
         <div className={styles.sidebarLogo}>
           <span>⚖</span>
           <div>
-            <p className={styles.sidebarName}>El Amrani</p>
+            <p className={styles.sidebarName}>Ratby</p>
             <p className={styles.sidebarSub}>Admin</p>
           </div>
         </div>
