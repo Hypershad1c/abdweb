@@ -1,21 +1,33 @@
 .footer {
-    padding: 5rem 0 2rem;
+  padding: 5rem 0 2rem;
   background: linear-gradient(
     180deg,
-    #070f1f 0%,
+    #050b18 0%,
     #0a1628 35%,
     #0f2040 70%,
-    #162d56 100%
+    #0b1a33 100%
   );
   position: relative;
   overflow: hidden;
 }
+
+/* top gold line */
 .topLine {
-  position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #c9a84c,
+    transparent
+  );
+  opacity: 0.5;
 }
 
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
@@ -23,88 +35,177 @@
   margin-bottom: 4rem;
 }
 
-/* Brand */
+/* ================= BRAND ================= */
 .logo {
-  display: flex; align-items: center; gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 1.25rem;
 }
-.logoIcon { font-size: 1.8rem; color: var(--gold); }
+
+.logoIcon {
+  font-size: 1.8rem;
+  color: #c9a84c;
+}
+
 .logoName {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem; font-weight: 700; color: var(--gold);
-  display: block; line-height: 1.2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
 }
+
 .logoSub {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--text-dim); display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 }
+
 .tagline {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 1rem; color: rgba(248,246,240,0.5); margin-bottom: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
   line-height: 1.6;
 }
-.socials { display: flex; gap: 0.75rem; }
-.social {
-  width: 38px; height: 38px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(201,168,76,0.2);
-  color: var(--text-dim);
-  transition: all 0.3s;
-}
-.social:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
 
-/* Columns */
-.col {}
+/* SOCIAL ICONS */
+.socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.social:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+  background: rgba(201, 168, 76, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ================= COLUMNS ================= */
 .colTitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
 }
-.colLinks { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+.colLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
 .colLink {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; color: rgba(248,246,240,0.55);
-  transition: color 0.3s; display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-.colLink::before { content: '—'; font-size: 0.7rem; color: rgba(201,168,76,0.3); }
-.colLink:hover { color: var(--gold-pale); }
 
+.colLink::before {
+  content: '—';
+  font-size: 0.7rem;
+  color: rgba(201, 168, 76, 0.4);
+}
+
+.colLink:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* ================= CONTACT ================= */
 .contactInfo {
-  display: flex; flex-direction: column; gap: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem; color: rgba(248,246,240,0.55);
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
   line-height: 1.5;
 }
 
-/* Bottom */
+/* ================= BOTTOM ================= */
 .bottom {
-  display: flex; align-items: center; justify-content: space-between;
-  padding-top: 2rem; border-top: 1px solid rgba(201,168,76,0.08);
-  flex-wrap: wrap; gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.12);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.copy {
-  font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
-  letter-spacing: 0.1em; color: rgba(248,246,240,0.3);
-}
-.bottomLinks { display: flex; align-items: center; gap: 0.75rem; }
-.bottomLink {
-  font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
-  letter-spacing: 0.08em; color: rgba(248,246,240,0.3);
-  transition: color 0.3s;
-}
-.bottomLink:hover { color: var(--gold); }
-.sep { color: rgba(201,168,76,0.3); }
 
-@media (max-width: 1000px) {
-  .grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .brand { grid-column: span 2; }
+.copy {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
 }
+
+.bottomLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.3s ease;
+}
+
+.bottomLink:hover {
+  color: #c9a84c;
+}
+
+.sep {
+  color: rgba(201, 168, 76, 0.4);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .brand {
+    grid-column: span 2;
+  }
+}
+
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
-  .brand { grid-column: span 1; }
-  .bottom { flex-direction: column; text-align: center; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .brand {
+    grid-column: span 1;
+  }
+
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+  }
 }

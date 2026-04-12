@@ -23,13 +23,14 @@ export async function verifyToken(token: string) {
 }
 
 export async function getAuthToken(): Promise<string | null> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies(); // ✅ FIX HERE
   return cookieStore.get('admin_token')?.value ?? null;
 }
 
 export async function isAuthenticated(): Promise<boolean> {
   const token = await getAuthToken();
   if (!token) return false;
+
   const payload = await verifyToken(token);
   return !!payload;
 }
