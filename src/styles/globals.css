@@ -9,6 +9,9 @@
   --gold-pale: #f5e6c0;
   --white: #f8f6f0;
   --text-dim: #8fa3be;
+  --ivory: #F5F1E8;
+  --charcoal: #1C1F26;
+  --slate: #2A3F5F;
   --border: rgba(201, 168, 76, 0.2);
   --font-display: 'Playfair Display', serif;
   --font-body: 'Cormorant Garamond', serif;
@@ -68,6 +71,7 @@ img {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.2;
+  color: #c9a84c;
 }
 .section-subtitle {
   font-family: var(--font-ui);
@@ -76,6 +80,7 @@ img {
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 1rem;
+  color: #c9a84c;
 }
 .divider {
   width: 60px;

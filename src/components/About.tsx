@@ -8,8 +8,11 @@ export default function About() {
   return (
     <section id="about" className={styles.about}>
       <div className={`container ${styles.inner}`}>
-        {/* Left – Image */}
+
+        {/* Image */}
         <div className={styles.imageWrap}>
+          <div className={styles.glow}></div>
+
           <div className={styles.imageFrame}>
             <img
               src="https://res.cloudinary.com/di00pq8bf/image/upload/v1775886153/a9b7ba7f-879d-4418-8993-6a698205137b_qwugzi.jpg"
@@ -17,41 +20,36 @@ export default function About() {
               className={styles.img}
             />
           </div>
+
           <div className={styles.imageBadge}>
-            <span className={styles.badgeIcon}>⚖</span>
+            <span>⚖</span>
           </div>
-          {/* Decorative */}
-          <div className={styles.decorBox}></div>
         </div>
 
-        {/* Right – Text */}
+        {/* Text */}
         <div className={styles.text}>
           <p className="section-subtitle">{t('about.badge')}</p>
-          <h2 className={`section-title ${styles.name}`}>{t('about.title')}</h2>
-          <div className="divider"></div>
+
+          <h2 className={styles.title}>
+            {t('about.title')}
+          </h2>
+
+          <div className={styles.line}></div>
 
           <p className={styles.desc}>{t('about.desc1')}</p>
           <p className={styles.desc}>{t('about.desc2')}</p>
 
-          <div className={styles.pills}>
-            <div className={styles.pill}>
-              <span className={styles.pillIcon}>🎓</span>
-              <span>{t('about.exp')}</span>
-            </div>
-            <div className={styles.pill}>
-              <span className={styles.pillIcon}>🌐</span>
-              <span>{t('about.lang')}</span>
-            </div>
-            <div className={styles.pill}>
-              <span className={styles.pillIcon}>⚖</span>
-              <span>{t('about.bar')}</span>
-            </div>
+          <div className={styles.tags}>
+            <div className={styles.tag}>🎓 {t('about.exp')}</div>
+            <div className={styles.tag}>🌐 {t('about.lang')}</div>
+            <div className={styles.tag}>⚖ {t('about.bar')}</div>
           </div>
 
-          <a href="#contact" className="btn-primary" style={{ marginTop: '2rem', display: 'inline-flex' }}>
+          <a href="#contact" className={styles.button}>
             {t('nav.consult')}
           </a>
         </div>
+
       </div>
     </section>
   );

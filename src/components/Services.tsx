@@ -18,26 +18,37 @@ export default function Services() {
 
   return (
     <section id="services" className={styles.services}>
-      <div className={styles.topDivider}></div>
+      <div className={styles.topDivider} />
 
       <div className="container">
         <div className={styles.header}>
           <p className="section-subtitle">{t('services.badge')}</p>
           <h2 className="section-title">{t('services.title')}</h2>
-          <div className="divider" style={{ margin: '1.5rem auto' }}></div>
+          <div className="divider" />
         </div>
 
         <div className={styles.grid}>
-          {services.map((s, i) => (
-            <div key={i} className={styles.card}>
-              <div className={styles.cardNum}>0{i + 1}</div>
-              <div className={styles.cardIcon}>{icons[i]}</div>
-              <h3 className={styles.cardTitle}>{s.title}</h3>
-              <div className={styles.cardLine}></div>
-              <p className={styles.cardDesc}>{s.desc}</p>
-              <div className={styles.cardHover}></div>
-            </div>
-          ))}
+          {services.map((s, i) => {
+            const featured = i === 1 || i === 4;
+
+            return (
+              <div
+                key={i}
+                className={`${styles.card} ${featured ? styles.featured : ''}`}
+              >
+                <div className={styles.cardTop}>
+                  <span className={styles.icon}>{icons[i]}</span>
+                  <span className={styles.num}>0{i + 1}</span>
+                </div>
+
+                <h3 className={styles.title}>{s.title}</h3>
+                <div className={styles.line}></div>
+                <p className={styles.desc}>{s.desc}</p>
+
+                <div className={styles.hoverLine}></div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
