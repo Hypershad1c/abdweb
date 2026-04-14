@@ -41,8 +41,8 @@ export default function Hero() {
           {/* Stats */}
           <div className={styles.stats}>
             {[
-              { num: '15+', label: t('hero.stat1') },
-              { num: '500+', label: t('hero.stat2') },
+              { num: '5+', label: t('hero.stat1') },
+              { num: '200+', label: t('hero.stat2') },
               { num: '98%', label: t('hero.stat3') },
             ].map((s, i) => (
               <div key={i} className={styles.stat}>
