@@ -1,52 +1,85 @@
-import fs from 'fs';
-import path from 'path';
+import { Redis } from '@upstash/redis'
 
+const redis = Redis.fromEnv()
+
+const POSTS_KEY = 'lawyer:posts'
+
+//
+// 🔥 BLOCK TYPES (NEW CMS SYSTEM)
+//
+export type PostContentBlock =
+  | { type: 'text'; value: string }
+  | { type: 'image'; url: string }
+  | { type: 'video'; url: string }
+
+//
+// 🔥 POST MODEL
+//
 export interface Post {
-  id: string;
-  title: string;
-  content: string;
-  excerpt: string;
-  category: string;
-  image?: string;
-  date: string;
-  published: boolean;
+  id: string
+  title: string
+  content: PostContentBlock[]   // ✅ CHANGED HERE
+  excerpt: string
+  category: string
+  image?: string
+  date: string
+  published: boolean
 }
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'posts.json');
+//
+// 🔥 SAFE GET
+//
+export async function getPosts(): Promise<Post[]> {
+  const data = await redis.get<Post[] | string | null>(POSTS_KEY)
 
-function ensureDataFile() {
-  const dir = path.dirname(DATA_FILE);
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  if (!fs.existsSync(DATA_FILE)) {
-    fs.writeFileSync(DATA_FILE, JSON.stringify([], null, 2));
+  if (!data) return []
+
+  if (typeof data === 'string') {
+    try {
+      const parsed = JSON.parse(data)
+      return Array.isArray(parsed) ? parsed : []
+    } catch {
+      return []
+    }
   }
+
+  return Array.isArray(data) ? data : []
 }
 
-export function getPosts(): Post[] {
-  ensureDataFile();
-  const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-  return JSON.parse(raw);
+//
+// 🔥 SAVE POST
+//
+export async function savePost(post: Post): Promise<void> {
+  const posts = await getPosts()
+
+  const updated = posts.some(p => p.id === post.id)
+    ? posts.map(p => (p.id === post.id ? post : p))
+    : [post, ...posts]
+
+  await redis.set(POSTS_KEY, updated)
 }
 
-export function getPublishedPosts(): Post[] {
-  return getPosts().filter(p => p.published);
+//
+// 🔥 GET PUBLISHED
+//
+export async function getPublishedPosts(): Promise<Post[]> {
+  const posts = await getPosts()
+  return posts.filter(p => p.published)
 }
 
-export function getPostById(id: string): Post | undefined {
-  return getPosts().find(p => p.id === id);
+//
+// 🔥 GET SINGLE POST
+//
+export async function getPostById(id: string): Promise<Post | null> {
+  const posts = await getPosts()
+  return posts.find(p => p.id === id) ?? null
 }
 
-export function savePost(post: Post): void {
-  ensureDataFile();
-  const posts = getPosts();
-  const idx = posts.findIndex(p => p.id === post.id);
-  if (idx >= 0) posts[idx] = post;
-  else posts.unshift(post);
-  fs.writeFileSync(DATA_FILE, JSON.stringify(posts, null, 2));
-}
-
-export function deletePost(id: string): void {
-  ensureDataFile();
-  const posts = getPosts().filter(p => p.id !== id);
-  fs.writeFileSync(DATA_FILE, JSON.stringify(posts, null, 2));
+//
+// 🔥 DELETE POST
+//
+export async function deletePost(id: string): Promise<void> {
+  const posts = await getPosts()
+  const updated = posts.filter(p => p.id !== id)
+  await redis.set(POSTS_KEY, updated)
 }
