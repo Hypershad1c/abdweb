@@ -31,14 +31,42 @@ const translations: Record<string, Record<Lang, string>> = {
   'hero.stat2':      { fr: 'Affaires gagnées', ar: 'قضايا رابحة' },
   'hero.stat3':      { fr: 'Clients satisfaits', ar: 'عملاء راضون' },
 
-  // About
-  'about.badge':     { fr: 'À Propos',        ar: 'نبذة عنّا' },
-  'about.title':     { fr: 'Maître Abdessamad Ratby', ar: 'الأستاذ عبد الصمد راتبي' },
-  'about.desc1':     { fr: 'Avocat au Barreau de Casablanca spécialisé en Droit des Affaires et Contentieux.', ar:'محامٍ في نقابة المحامين بالدار البيضاء متخصص في قانون الأعمال والتقاضي' },
-  'about.desc2':     { fr: 'Maître Ratby met à profit son expertise juridique rigoureuse pour accompagner les entreprises et les particuliers.', ar: 'يستغل المحامي راتبي خبرته لأنه بسبب الشركات والأفراد. بفضل خبرته الراسخة في الشركات المرموقة والإدارة القانونية، يقدم نهجاً استراتيجياً ومتعدد التخصصات.' },
-  'about.exp':       { fr: '5+ ans d\'expérience', ar: '+5 سنة خبرة' },
-  'about.lang':      { fr: 'Arabe • Français • Anglais', ar: 'العربية • الفرنسية • الإنجليزية' },
-  'about.bar':       { fr: 'Barreau de Casablanca', ar: 'نقابة المحامين بالدار البيضاء' },
+// About
+'about.badge': { 
+  fr: 'À Propos',  
+  ar: 'نبذة عن المكتب' 
+},
+
+'about.title': { 
+  fr: 'Maître Abdessamad Ratby', 
+  ar: 'الأستاذ عبد الصمد راتبي' 
+},
+
+'about.desc1': { 
+  fr: "Avocat inscrit au Barreau de Casablanca, Maître Abdessamad Ratby dirige un cabinet d’avocats offrant des services juridiques complets. Alliant expertise professionnelle et rigueur dans le traitement des dossiers, il intervient notamment en Droit des affaires, contentieux civil et commercial, avec une approche stratégique orientée vers les résultats. Fort d’une expérience acquise depuis 2012, il a développé une connaissance approfondie des différentes branches du droit ainsi qu’une pratique confirmée devant les juridictions. Le cabinet, fondé en 2020 et situé à Al Oulfa à Casablanca, accompagne particuliers et entreprises avec professionnalisme et engagement.",
+  
+  ar: "الأستاذ عبد الصمد الراتبي، محامٍ بهيئة الدار البيضاء، يشرف على مكتب محاماة يقدّم خدمات قانونية متكاملة تجمع بين الخبرة المهنية والدقة في معالجة مختلف القضايا. يتخصص المكتب في قانون الأعمال، والمنازعات المدنية والتجارية، مع اعتماد مقاربة استراتيجية قائمة على تحقيق النتائج. ويتمتع الأستاذ بخبرة قانونية ممتدة منذ سنة 2012، مكّنته من اكتساب معرفة عميقة بمختلف فروع القانون وممارسة ميدانية راسخة أمام المحاكم. وقد تأسس المكتب سنة 2020 ويتخذ من منطقة الألفة بمدينة الدار البيضاء مقراً له، حيث يواكب الأفراد والمقاولات بكفاءة والتزام مهني."
+},
+
+'about.desc2': { 
+  fr: 'Titulaire d’une licence en droit français de la Faculté des Sciences Juridiques de Casablanca, Maître Ratby dispose d’une solide formation académique lui permettant de traiter efficacement les dossiers à dimension internationale et comparée. Le cabinet accompagne entreprises et particuliers dans les domaines du droit civil, commercial, immobilier, droit de la famille, droit du travail ainsi qu’en matière pénale. Rigueur, confidentialité et engagement constituent les valeurs fondamentales du cabinet, garantissant à chaque client un accompagnement personnalisé et une défense optimale de ses intérêts.', 
+  ar: 'حاصل على الإجازة في القانون الفرنسي من كلية العلوم القانونية بالدار البيضاء، مما يعزز تكوينه الأكاديمي ويمكّنه من التعامل بكفاءة مع القضايا ذات البعد الدولي أو المرتبطة بالتشريعات المقارنة. يختص المكتب في القانون المدني، التجاري، العقاري، قانون الأسرة، منازعات الشغل، والقضايا الزجرية، كما يواكب المقاولات في مختلف مراحلها. يقوم عمل المكتب على الالتزام الصارم بأخلاقيات المهنة، والسرية التامة، والتواصل المستمر مع الزبناء، مع الحرص على تقديم خدمات قانونية عالية الجودة قائمة على الكفاءة والاحترافية.' 
+},
+
+'about.exp': { 
+  fr: 'Plus de 12 ans d’expérience', 
+  ar: 'أكثر من 12 سنوات من الخبرة' 
+},
+
+'about.lang': { 
+  fr: 'Arabe • Français • Anglais', 
+  ar: 'العربية • الفرنسية • الإنجليزية' 
+},
+
+'about.bar': { 
+  fr: 'Barreau de Casablanca', 
+  ar: 'هيئة المحامين بالدار البيضاء' 
+},
 
   // Services
   'services.badge':  { fr: 'Domaines d\'Expertise', ar: 'مجالات الخبرة' },

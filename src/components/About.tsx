@@ -15,7 +15,7 @@ export default function About() {
 
           <div className={styles.imageFrame}>
             <img
-              src="https://res.cloudinary.com/di00pq8bf/image/upload/v1775886153/a9b7ba7f-879d-4418-8993-6a698205137b_qwugzi.jpg"
+              src="https://res.cloudinary.com/di00pq8bf/image/upload/v1776546753/Gemini_Generated_Image_upw9inupw9inupw9_zggfti.png"
               alt="Ratby"
               className={styles.img}
             />

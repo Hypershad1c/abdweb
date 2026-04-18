@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     // 📨 EMAIL TO YOU (ADMIN)
     await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
-      to: 'spox618@gmail.com',
+      to: 'abdessamad.ratby@gmail.com',
       subject: `New message: ${subject || 'No subject'}`,
       replyTo: email,
       html: `

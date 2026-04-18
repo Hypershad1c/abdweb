@@ -44,7 +44,7 @@ export default function Footer() {
 
               {/* Instagram */}
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ratbyabdessamad/"
                 className={styles.social}
                 target="_blank"
                 rel="noreferrer"
@@ -70,7 +70,7 @@ export default function Footer() {
 
               {/* Facebook */}
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/ratby.abdessamad"
                 className={styles.social}
                 target="_blank"
                 rel="noreferrer"
@@ -89,7 +89,7 @@ export default function Footer() {
               </a>
 
               {/* Email */}
-              <a href="mailto:contact@cabinet-ratby.ma" className={styles.social} aria-label="Email">
+              <a href="mailto:abdessamad.ratby@gmail.com" className={styles.social} aria-label="Email">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                   <polyline points="22,6 12,13 2,6"/>
@@ -136,16 +136,35 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* CONTACT */}
-          <div className={styles.col}>
-            <h4 className={styles.colTitle}>Contact</h4>
-            <div className={styles.contactInfo}>
-              <p>157 LOT CHAHDIA, RUE 86 N8<br />Casablanca 20220</p>
-              <p>+212 7 07 73 73 47</p>
-              <p>contact@cabinet-ratby.ma</p>
-              <p>Lun–Ven: 9h–18h</p>
-            </div>
-          </div>
+{/* CONTACT */}
+<div className={styles.col}>
+  <h4 className={styles.colTitle}>{t('footer.contact')}</h4>
+
+  <div className={styles.contactInfo}>
+
+    {/* Address (can stay normal) */}
+    <p>
+      157 LOT CHAHDIA, RUE 86 N8<br />
+      Casablanca 20220
+    </p>
+
+    {/* Phone — FORCE LTR */}
+    <p dir="ltr" className={styles.ltrItem}>
+      +212 7 07 73 73 47
+    </p>
+
+    {/* Email — FORCE LTR */}
+    <p dir="ltr" className={styles.ltrItem}>
+      abdessamad.ratby@gmail.com
+    </p>
+
+    {/* Time */}
+    <p>
+      Lun–Ven: 9h–18h
+    </p>
+
+  </div>
+</div>
 
         </div>
 

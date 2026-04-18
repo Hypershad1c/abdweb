@@ -199,7 +199,7 @@ export default function Contact() {
                 <div>
                   <p className={styles.infoLabel}>Email</p>
                   <p className={styles.infoValue}>
-                    contact@cabinet-ratby.ma
+                    abdessamad.ratby@gmail.com
                   </p>
                 </div>
               </div>
