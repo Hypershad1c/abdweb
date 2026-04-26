@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+// const MONGODB_URI = process.env.MONGODB_URI as string;
 
-if (!MONGODB_URI) {
-  throw new Error('Please define MONGODB_URI in .env.local');
-}
+// if (!MONGODB_URI) {
+//   throw new Error('Please define MONGODB_URI in .env.local');
+// }
 
 // 🧠 Global cache typing fix
 declare global {
@@ -15,7 +15,6 @@ declare global {
   } | undefined;
 }
 
-// Use separate global key (IMPORTANT FIX)
 const cached = global.mongooseCache ?? {
   conn: null,
   promise: null,
@@ -24,6 +23,12 @@ const cached = global.mongooseCache ?? {
 global.mongooseCache = cached;
 
 export async function connectDB() {
+  const MONGODB_URI = process.env.MONGODB_URI; // move here
+
+  if (!MONGODB_URI) {
+    throw new Error('Missing MONGODB_URI'); // still protects runtime
+  }
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
