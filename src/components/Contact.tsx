@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useLang } from '@/context/LangContext';
 import styles from './Contact.module.css';
+import Turnstile from 'react-turnstile';
 
 export default function Contact() {
   const { t } = useLang();
@@ -17,33 +18,36 @@ export default function Contact() {
 
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState<string | null>(null);
+
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!token) {
+      alert('Please complete verification');
+      return;
+    }
+
     setLoading(true);
 
-    const formData = new FormData(e.currentTarget);
-
     const payload = {
-      name: form.name,
-      email: form.email,
-      phone: form.phone,
-      subject: form.subject,
-      message: form.message,
-      website: formData.get('website'), // 🕵️ honeypot
+      ...form,
+      website: (e.currentTarget.elements.namedItem('website') as HTMLInputElement)?.value,
+      token,
     };
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
       if (res.ok) {
         setSent(true);
+
         setForm({
           name: '',
           email: '',
@@ -52,10 +56,12 @@ export default function Contact() {
           message: '',
         });
 
+        setToken(null);
+
         setTimeout(() => setSent(false), 4000);
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
     }
 
     setLoading(false);
@@ -72,7 +78,7 @@ export default function Contact() {
         <div className={styles.header}>
           <p className="section-subtitle">{t('contact.badge')}</p>
           <h2 className="section-title">{t('contact.title')}</h2>
-          <div className="divider" style={{ margin: '1.5rem auto' }}></div>
+          <div className="divider" style={{ margin: '1.5rem auto' }} />
         </div>
 
         <div className={styles.grid}>
@@ -80,17 +86,22 @@ export default function Contact() {
           <div className={styles.formWrap}>
             <form onSubmit={handleSubmit} className={styles.form}>
 
+              <input
+                type="text"
+                name="website"
+                autoComplete="off"
+                tabIndex={-1}
+                style={{ display: 'none' }}
+              />
+
               <div className={styles.row}>
                 <div className={styles.field}>
                   <label className={styles.label}>{t('contact.name')}</label>
                   <input
                     className={styles.input}
-                    type="text"
                     required
                     value={form.name}
-                    onChange={(e) =>
-                      setForm({ ...form, name: e.target.value })
-                    }
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                   />
                 </div>
 
@@ -101,9 +112,7 @@ export default function Contact() {
                     type="email"
                     required
                     value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                   />
                 </div>
               </div>
@@ -113,11 +122,8 @@ export default function Contact() {
                   <label className={styles.label}>{t('contact.phone')}</label>
                   <input
                     className={styles.input}
-                    type="tel"
                     value={form.phone}
-                    onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
-                    }
+                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   />
                 </div>
 
@@ -125,12 +131,9 @@ export default function Contact() {
                   <label className={styles.label}>{t('contact.subject')}</label>
                   <input
                     className={styles.input}
-                    type="text"
                     required
                     value={form.subject}
-                    onChange={(e) =>
-                      setForm({ ...form, subject: e.target.value })
-                    }
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
                   />
                 </div>
               </div>
@@ -142,25 +145,26 @@ export default function Contact() {
                   rows={5}
                   required
                   value={form.message}
-                  onChange={(e) =>
-                    setForm({ ...form, message: e.target.value })
-                  }
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
                 />
               </div>
 
-              {/* 🕵️ HONEYPOT (hidden field for bots) */}
-              <input
-                type="text"
-                name="website"
-                autoComplete="off"
-                tabIndex={-1}
-                style={{ display: 'none' }}
-              />
+              {/* TURNSTILE */}
+              {siteKey ? (
+                <Turnstile
+                  sitekey={siteKey}
+                  onVerify={(token) => setToken(token)}
+                />
+              ) : (
+                <p style={{ color: 'red' }}>
+                  Turnstile site key missing
+                </p>
+              )}
 
               <button
                 type="submit"
                 className={styles.submitBtn}
-                disabled={loading}
+                disabled={loading || !token}
               >
                 {loading ? '...' : t('contact.send')}
               </button>
@@ -171,68 +175,20 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* INFO + MAP */}
+          {/* INFO */}
           <div className={styles.infoWrap}>
-            <div className={styles.infoBlock}>
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>📍</span>
-                <div>
-                  <p className={styles.infoLabel}>{t('contact.address')}</p>
-                  <p className={styles.infoValue}>
-                    {t('contact.addr.val')}
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>📞</span>
-                <div>
-                  <p className={styles.infoLabel}>Téléphone</p>
-                  <p className={styles.infoValue} dir="ltr">
-                    +212 7 07 73 73 47
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>✉️</span>
-                <div>
-                  <p className={styles.infoLabel}>Email</p>
-                  <p className={styles.infoValue}>
-                    abdessamad.ratby@gmail.com
-                  </p>
-                </div>
-              </div>
-
-              <div className={styles.infoItem}>
-                <span className={styles.infoIcon}>🕐</span>
-                <div>
-                  <p className={styles.infoLabel}>
-                    {t('contact.hours')}
-                  </p>
-                  <p
-                    className={styles.infoValue}
-                    style={{ whiteSpace: 'pre-line' }}
-                  >
-                    {t('contact.hours.val')}
-                  </p>
-                </div>
-              </div>
-            </div>
-
             <div className={styles.mapWrap}>
               <iframe
                 src={mapsUrl}
                 width="100%"
                 height="250"
                 style={{ border: 0 }}
-                allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Cabinet Location"
+                title="Map"
               />
             </div>
           </div>
+
         </div>
       </div>
     </section>

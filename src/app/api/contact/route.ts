@@ -1,17 +1,69 @@
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { rateLimit } from '@/lib/rate-limit'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, subject, message, website } =
-      await req.json()
+    // 🛡️ GET REAL IP (Vercel safe)
+    const forwarded = req.headers.get('x-forwarded-for')
+    const ip = forwarded ? forwarded.split(',')[0] : 'anonymous'
 
-    // 🕵️ HONEYPOT CHECK (ANTI-SPAM)
+    // 🛡️ RATE LIMIT
+    const { success } = await rateLimit.limit(ip)
+
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Too many requests' },
+        { status: 429 }
+      )
+    }
+
+    const body = await req.json()
+
+    const {
+      name,
+      email,
+      phone,
+      subject,
+      message,
+      website,
+      token, // 👈 Turnstile token
+    } = body
+
+    // 🕵️ HONEYPOT CHECK
     if (website && website.trim() !== '') {
       return NextResponse.json(
         { error: 'Spam detected' },
+        { status: 400 }
+      )
+    }
+
+    // 🤖 VERIFY CLOUDFLARE TURNSTILE
+    if (!token) {
+      return NextResponse.json(
+        { error: 'Verification required' },
+        { status: 400 }
+      )
+    }
+
+    const turnstileRes = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `secret=${process.env.TURNSTILE_SECRET_KEY}&response=${token}&remoteip=${ip}`,
+      }
+    )
+
+    const turnstileData = await turnstileRes.json()
+
+    if (!turnstileData.success) {
+      return NextResponse.json(
+        { error: 'Bot verification failed' },
         { status: 400 }
       )
     }
@@ -24,13 +76,9 @@ export async function POST(req: Request) {
       )
     }
 
-    console.log('📩 New contact form received:', {
-      name,
-      email,
-      subject,
-    })
+    console.log('📩 New contact form:', { name, email, subject })
 
-    // 📨 EMAIL TO YOU (ADMIN)
+    // 📨 EMAIL TO ADMIN
     await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
       to: 'abdessamad.ratby@gmail.com',
@@ -50,7 +98,7 @@ export async function POST(req: Request) {
       `,
     })
 
-    // 🤖 AUTO REPLY TO USER
+    // 🤖 AUTO REPLY
     await resend.emails.send({
       from: 'Cabinet Ratby <onboarding@resend.dev>',
       to: email,
@@ -65,10 +113,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true })
   } catch (err) {
-    console.error('❌ Email error:', err)
+    console.error('❌ Contact API error:', err)
 
     return NextResponse.json(
-      { error: 'Email failed' },
+      { error: 'Server error' },
       { status: 500 }
     )
   }

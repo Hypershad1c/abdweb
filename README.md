@@ -52,15 +52,7 @@ npm run dev
 ```
 Ouvrir [http://localhost:3000](http://localhost:3000)
 
----
 
-## 🔐 Accès Admin
-
-URL : `/admin` → redirige automatiquement vers `/admin/login`
-
-Identifiants par défaut (à changer dans `.env.local`) :
-- Utilisateur : `admin`
-- Mot de passe : `admin123`
 
 Depuis le dashboard admin vous pouvez :
 - Créer, modifier, supprimer des articles de blog

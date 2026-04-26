@@ -29,8 +29,8 @@ export default function Navbar() {
         <a href="#hero" className={styles.logo}>
           <span className={styles.logoIcon}>⚖</span>
           <div className={styles.logoText}>
-            <span className={styles.logoName}>Ratby </span>
-            <span className={styles.logoSub}>Cabinet Juridique</span>
+            <span className={styles.logoName}>Abdessamad Ratby</span>
+            <span className={styles.logoSub}>Cabinet D'avocats</span>
           </div>
         </a>
 
